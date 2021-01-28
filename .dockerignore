@@ -1,0 +1,11 @@
+### macOS ###
+.DS_Store
+
+### Virtual environment ###
+env/
+.venv/
+
+### Configuration files ###
+.env
+### module4
+.vagrant
