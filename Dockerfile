@@ -29,6 +29,12 @@ EXPOSE 5002
 CMD poetry run flask run --host 0.0.0.0
 
 # for production
-# FROM base as production
-# EXPOSE 5001
-# CMD ["gunicorn", "--bind", "0.0.0.0:5001", "--log-level=debug", "app:todo_app/app"]
+FROM base as production
+EXPOSE 5001
+CMD poetry run gunicorn --host 0.0.0.0
+
+# ["gunicorn", "--bind", "0.0.0.0:5001", "--log-level=debug", "app:todo_app/app"]
+
+#FROM base as prod
+#ENV FLASK_ENV=production
+#ENTRYPOINT poetry run gunicorn "app:create_app()" --bind 0.0.0.0:5000

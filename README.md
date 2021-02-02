@@ -50,3 +50,27 @@ You should see output similar to the following:
  * Debugger PIN: 226-556-590
 ```
 Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser to view the app.
+
+## Running the Docker build and run app with just development entry in Dockerfile
+steps 1 - 
+docker build --tag module5 .
+
+step2 - 
+docker run -p 5000:5000 --env-file .env module5
+ * Serving Flask app "todo_app/app" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 240-503-066
+
+ ## Running the App in PROD environment
+ ## added below entry to pyproject.toml
+ gunicorn = "20.0.4"
+
+ ## Add production build stage to dockerfile
+ 
+
+
+
