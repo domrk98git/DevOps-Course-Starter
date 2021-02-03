@@ -69,8 +69,31 @@ docker run -p 5000:5000 --env-file .env module5
  ## added below entry to pyproject.toml
  gunicorn = "20.0.4"
 
- ## Add production build stage to dockerfile
- 
+## Add development build stage to dockerfile
+ docker build --target development --tag module5:dev .
+
+ ## Running the App in dev environment
+
+ (base) RaviDommatas-Mac-mini:DevOps-Course-Starter rkdommata$ docker run -p 5000:5000 --env-file .env module5:dev .
+docker: Error response from daemon: OCI runtime create failed: container_linux.go:349: starting container process caused "exec: \".\": executable file not found in $PATH": unknown.
+(base) RaviDommatas-Mac-mini:DevOps-Course-Starter rkdommata$ docker run -p 5000:5000 --env-file .env -d module5                                  2d356da249c9746a8d3f3de47c1c03fafb19215642694d1c9750c95dfbeeb714
+(base) RaviDommatas-Mac-mini:DevOps-Course-Starter rkdommata$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                              NAMES
+2d356da249c9        module5             "/bin/sh -c 'poetry …"   12 minutes ago      Up 12 minutes       0.0.0.0:5000->5000/tcp, 5002/tcp   vibrant_khorana
+
+## Add production build stage to dockerfile
+(base) RaviDommatas-Mac-mini:DevOps-Course-Starter rkdommata$ docker build --target development --tag module5:prod .
+....
+Successfully built 7b4498ed3446
+Successfully tagged module5:prod
+
+## Running the App in dev environmentbase) 
+RaviDommatas-Mac-mini:DevOps-Course-Starter rkdommata$ docker run -p 5001:5001 --env-file .env -d module5:prod
+061fbafef6fb67906858b28a27c95bb999d6d4da29664aa14d7af4fec3a9228e
+(base) RaviDommatas-Mac-mini:DevOps-Course-Starter rkdommata$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                              NAMES
+061fbafef6fb        module5:prod        "/bin/sh -c 'poetry …"   24 seconds ago      Up 23 seconds       0.0.0.0:5001->5001/tcp, 5002/tcp   gifted_mayer
+2d356da249c9        module5             "/bin/sh -c 'poetry …"   23 hours ago        Up 23 hours         0.0.0.0:5000->5000/tcp, 5002/tcp   vibrant_khorana
 
 
 
