@@ -31,5 +31,5 @@ CMD poetry run flask run --host 0.0.0.0
 # for production
 FROM base as production
 EXPOSE 5001
-CMD poetry run gunicorn --host 0.0.0.0
+CMD poetry run gunicorn "todo_app.app:app" --bind 0.0.0.0
 

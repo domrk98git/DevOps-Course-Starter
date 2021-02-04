@@ -95,5 +95,6 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 061fbafef6fb        module5:prod        "/bin/sh -c 'poetry …"   24 seconds ago      Up 23 seconds       0.0.0.0:5001->5001/tcp, 5002/tcp   gifted_mayer
 2d356da249c9        module5             "/bin/sh -c 'poetry …"   23 hours ago        Up 23 hours         0.0.0.0:5000->5000/tcp, 5002/tcp   vibrant_khorana
 
+docker run -p 5002:5002 --env-file .env  module5:prod
 
 
