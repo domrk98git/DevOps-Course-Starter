@@ -1,9 +1,13 @@
 import requests
 import os
 
+from todo_app.data.item import TrelloItem
 
-board_id= '6032b49b5e077170a897e557'
-todo_id='6032b49b5e077170a897e558'
+
+board_id= os.getenv('BOARDID')
+todo_id=os.getenv('TODOID')
+pending_id=os.getenv('PENDINGID')
+done_id=os.getenv('DONEID')
 
 def create_item(title):
 
@@ -22,12 +26,9 @@ def create_item(title):
     params=query
     )
 
-    print(response.json())
-
-def fetch_items():
-    ##url = f"https://api.trello.com/1/boards/{board_id}/cards"
-    url = f"https://api.trello.com/1/lists/{todo_id}/cards"
-
+def fetch_items_board():
+    url = f"https://api.trello.com/1/boards/{board_id}/cards"
+    
     query = {
     'key': os.getenv('APP_KEY'),
     'token': os.getenv('APP_TOKEN')
@@ -41,13 +42,48 @@ def fetch_items():
 
     return response.json()
 
+def fetch_lists_board():
+    url = f"https://api.trello.com/1/boards/{board_id}/lists"
+    
+    query = {
+    'key': os.getenv('APP_KEY'),
+    'token': os.getenv('APP_TOKEN')
+    }
+
+    response = requests.request(
+    "GET",
+    url,
+    params=query
+    )
+
+    return response.json()
+
+def fetch_items(listid, status):
+    url = f"https://api.trello.com/1/lists/{listid}/cards"
+
+    query = {
+    'key': os.getenv('APP_KEY'),
+    'token': os.getenv('APP_TOKEN')
+    }
+
+    response = requests.request(
+    "GET",
+    url,
+    params=query
+    )
+    items=[]
+    for item in response.json():
+        items.append(TrelloItem(item['id'],status,item['name']))
+
+    return items
+
 def UpdateToDone(card_id):
     url = f"https://api.trello.com/1/cards/{card_id}"
     
     query = {
     'key': os.getenv('APP_KEY'),
     'token': os.getenv('APP_TOKEN'),
-    'idList': '6032b49b5e077170a897e55a'
+    'idList': os.getenv('DONEID')
     }
   
     response = requests.request(
@@ -55,5 +91,3 @@ def UpdateToDone(card_id):
     url,
     params=query
     )
-
-    print(response.json())

@@ -56,4 +56,6 @@ APP_KEY and APP_TOKEN added to .env file which will be ignored by .gitignore to 
 
 Trello website. 
 https://trello.com/b/hewBwugd/module2
-add .jason to above to lookup boardid, listid details 
+add .json to above to lookup boardid, listid details 
+
+## create class for to-do items:
