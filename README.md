@@ -51,6 +51,14 @@ You should see output similar to the following:
 ```
 Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser to view the app.
 
+## Trello API TOKEN:  
+APP_KEY and APP_TOKEN added to .env file which will be ignored by .gitignore to upload to git repository, not uploaded during GIT push.
+
+Trello website. 
+https://trello.com/b/hewBwugd/module2
+add .json to above to lookup boardid, listid details 
+
+
 ## Add development build stage to dockerfile
  docker build --target development --tag module5:dev .
 
