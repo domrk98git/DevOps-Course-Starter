@@ -16,7 +16,7 @@
       </form>
       <ul class="list-group mb-4">
         <!-- List the todo items here -->
-        {% for item in items %}
+        {% for item in view_model.items %}
         <li>{{ item.name }},{{ item.status }} 
           <a href='/UpdateToDone?id={{item.id}}'> UpdateStatus </a> test
         </li>
