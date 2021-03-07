@@ -73,7 +73,7 @@ def fetch_items(listid, status):
     )
     items=[]
     for item in response.json():
-        items.append(TrelloItem(item['id'],status,item['name']))
+        items.append(TrelloItem(item['id'],status,item['name'],update_time=item['dateLastActivity']))
 
     return items
 

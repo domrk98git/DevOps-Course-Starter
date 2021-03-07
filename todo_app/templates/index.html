@@ -56,5 +56,17 @@
           {% endfor %}
         </ul>
       </div>
+      <div class="col-md-12">
+        <h2>Done Items from Trello - Today:</h2>
+        <ul class="list-group mb-4">
+          <!-- List the todo items here -->
+          {% for item in view_model.done_today %}
+          <li>{{ item.name }},{{ item.status }} 
+            <a href='/UpdateToDone?id={{item.id}}'> UpdateStatus </a> test
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    
   </div>
 {% endblock %}
