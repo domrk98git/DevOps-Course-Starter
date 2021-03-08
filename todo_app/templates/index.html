@@ -17,7 +17,7 @@
       <ul class="list-group mb-4">
         <!-- List the todo items here -->
         {% for item in view_model.items %}
-        <li>{{ item.name }},{{ item.status }} 
+        <li>{{ item.update_time }},{{ item.name }},{{ item.status }} 
           <a href='/UpdateToDone?id={{item.id}}'> UpdateStatus </a> test
         </li>
         {% endfor %}
@@ -67,6 +67,17 @@
           {% endfor %}
         </ul>
       </div>
+      <details>
+        <summary>Done Items from Trello - Older:</summary>
+        <ul class="list-group mb-4">
+          <!-- List the todo items here -->
+          {% for item in view_model.done_older %}
+          <li>{{ item.name }},{{ item.status }} 
+            <a href='/UpdateToDone?id={{item.id}}'> UpdateStatus </a> test
+          </li>
+          {% endfor %}
+        </ul>
+      </details>
     
   </div>
 {% endblock %}

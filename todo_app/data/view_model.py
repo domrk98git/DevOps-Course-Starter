@@ -22,5 +22,11 @@ class ViewModel:
     def done_today(self):
         done = self.done_items
         today = datetime.date.today()
-        return [item for item in done if item.update_time == today]
+        return [item for item in done if item.update_time.date() == today]
+
+    @property
+    def done_older(self):
+        done = self.done_items
+        today = datetime.date.today()
+        return [item for item in done if item.update_time.date() < today]
          
