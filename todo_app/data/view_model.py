@@ -29,4 +29,12 @@ class ViewModel:
         done = self.done_items
         today = datetime.date.today()
         return [item for item in done if item.update_time.date() < today]
+
+    @property
+    def done_5today_older(self):
+        print(len(self.done_items))
+        if len(self.done_items) > 5:
+            return self.done_older
+        elif len(self.done_items) <= 5: 
+            return self.done_today[0:5]
          
