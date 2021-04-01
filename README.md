@@ -114,4 +114,6 @@ Accessed production at http://0.0.0.0:5002
 172.17.0.1 - - [20/Feb/2021 04:22:45] "POST /Add HTTP/1.1" 302 -
 172.17.0.1 - - [20/Feb/2021 04:22:45] "GET / HTTP/1.1" 200 -
 
+## docker build tests
+docker build --target test --tag mod7test .
 
