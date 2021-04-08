@@ -1,7 +1,7 @@
 #script:
 #- echo "hello world"
 #docker build --target development --tag todo-app:dev .
-docker build --target development --tag module5:dev .
-#docker build --target test --tag mod7test .
-#docker run mod7test tests
+#docker build --target development --tag module5:dev .
+docker build --target test --tag mod7test .
+docker run mod7test tests
 #docker run mod7test tests_selenium

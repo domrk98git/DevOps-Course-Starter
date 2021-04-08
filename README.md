@@ -116,4 +116,8 @@ Accessed production at http://0.0.0.0:5002
 
 ## docker build tests
 docker build --target test --tag mod7test .
+## docker run tests
+docker run mod7test tests
+## docker run E2Etests
+docker run mod7test tests_selenium
 
