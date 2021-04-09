@@ -9,3 +9,5 @@ env/
 .env
 ### module4
 .vagrant
+
+chromedriver
