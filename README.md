@@ -114,4 +114,17 @@ Accessed production at http://0.0.0.0:5002
 172.17.0.1 - - [20/Feb/2021 04:22:45] "POST /Add HTTP/1.1" 302 -
 172.17.0.1 - - [20/Feb/2021 04:22:45] "GET / HTTP/1.1" 200 -
 
+## running tests 
+poetry run pytest
+
+## docker build tests
+docker build --target test --tag mod7test .
+## docker run tests
+docker run mod7test tests
+## docker run E2Etests
+docker run mod7test tests_selenium
+## docker run locally with variables from .env file to trello
+docker run --env-file .env  mod7test tests_selenium
+## docker run via travis having app key & token variable on site and not local in yml
+docker run -e APP_KEY -e APP_TOKEN mod7test tests_selenium
 

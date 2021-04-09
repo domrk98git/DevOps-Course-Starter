@@ -64,9 +64,13 @@ def app_with_temp_board():
     thread.join(1) 
     delete_trello_board()
 
-@pytest.fixture(scope="module") 
+@pytest.fixture(scope='module') 
 def driver():
-    with webdriver.Chrome('./chromedriver') as driver: 
+    opts = webdriver.ChromeOptions()
+    opts.add_argument('--headless') 
+    opts.add_argument('--no-sandbox') 
+    opts.add_argument('--disable-dev-shm-usage')
+    with webdriver.Chrome('./chromedriver', options=opts) as driver:
         yield driver
 
 def test_task_journey(driver, app_with_temp_board): 
